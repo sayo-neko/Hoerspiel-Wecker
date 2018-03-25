@@ -25,7 +25,8 @@ class MPD:
 
     def doSomething(self):
         print(self.client.mpd_version)  # print the MPD version
-        print(self.client.findadd("file", "At The Gates - All Life Ends.mp3"))  # print result of the command "find any house"
+
+        # print(self.client.findadd("file", "At The Gates - All Life Ends.mp3"))  # print result of the command "find any house"
         print(self.client.list('file'))
         print(self.client.currentsong())  # print result of the command "find any house"
         print(self.client.stats())  # print result of the command "find any house"

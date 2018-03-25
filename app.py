@@ -4,15 +4,16 @@ from flask import Flask, render_template, request
 from src.mpd import MPD
 
 
-class Weatherman:
+class Hoerspielwecker:
     config = Config()
 
-    def __init__(self, port=80):
+    def __init__(self, port=80, debug=False):
         self.port = port
+        self.debug = debug
+        self.basePath = os.path.dirname(os.path.abspath(__file__))
 
     def init(self):
         """ Bootstrapping """
-        print("init")
         self.initFlask()
 
     def returnContext(self):
@@ -52,23 +53,23 @@ class Weatherman:
         def catch_all(path):
             context = self.returnContext()
             fspath = 'content/' + path + '.html'
-            if os.path.isfile('./templates/' + fspath):
-                return render_template(fspath, **context)
+            if os.path.isfile(self.basePath + '/templates/' + fspath):
+                return render_template(fspath, **context), 200
             else:
                 return render_template('error.html', **context), 404
 
         if __name__ == '__main__':
-            app.run(debug=True, host='0.0.0.0')
+            app.run(debug=self.debug, host='0.0.0.0', port=self.port)
 
 
-mpd = MPD()
+# mpd = MPD()
 
-mpd.connect()
+# mpd.connect()
 
-mpd.doSomething()
+# mpd.doSomething()
 
-mpd.disconnect()
+# mpd.disconnect()
 
-weatherman = Weatherman()
+hoerspielwecker = Hoerspielwecker()
 
-weatherman.init()
+hoerspielwecker.init()
