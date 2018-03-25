@@ -1,0 +1,14 @@
+body {
+    background-color: #222;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+.navigation .link {
+    color: #275b83;
+}
+
+.navigation .link.active {
+    color: #337ab7;
+    font-weight: bold;
+}

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>{{pageTitle}}{{current_page_name()}}</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="static/css/libs/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="static/css/libs/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/main.css">
+
+    <script src="static/js/libs/jquery.min.js"></script>
+    <script src="static/js/libs/jquery.flot.js"></script>
+    <script src="static/js/libs/jquery.flot.time.js"></script>
+    <script src="static/bundle.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>{{pageTitle}}</h1>
+            </div>
+            <div class="col-sm-12 navigation">
+                {% for link in navigation %}
+                <a href="{{ link.url }}" class="link {% if request.path == link.url %}active{% endif %}">{{ link.name }}</a>
+              {% endfor %}
+            </div>
+            <div class="col-sm-12">
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+    </div>
+    
+    <script src="static/js/libs/popper.min.js"></script>
+    <script src="static/js/libs/bootstrap.min.js"></script>
+    <script src="static/js/libs/Chart.min.js"></script>
+</body>
+
+</html>
